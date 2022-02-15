@@ -1,19 +1,22 @@
+import {Graph} from './graph.js'
+
 export class negativeCycleExtractor {
-    graph;
-    distanceSet;
-    newLayer;
-    currentLayer;
-    predecessorMap;
-    visitedSet;
-    currentNode;
-    cycle; //list of Edges
-    constructor(edges) {
-        this.graph = edges;
+    graph: Graph
+    distanceSet: Map<string, number>
+    newLayer: Set<string>
+    currentLayer: Set<string>
+    predecessorMap: Map<string, Edge>
+    visitedSet: Set<string>
+    currentNode: string
+    cycle: Edge[] //list of Edges
+
+    constructor(edges: Graph) { 
+        this.graph = edges
         for (let [entry] of edges.edgeSet) {
-            this.distanceSet.set(entry, 0.0);
+            this.distanceSet.set(entry, 0.0)
         }
     }
-    extractNegativeCycleIfOneExists() {
+    extractNegativeCycleIfOneExists(): Edge[] {
         /**
          * Searches a negative cycle using Bellman-Ford algorithm. If one exists, returns it. Else, returns null list. Also calls a custom print function.
          * To save memory and time, uses hashsets and keys (nodes / edge.from) for the lookup and update complexity.
@@ -21,19 +24,19 @@ export class negativeCycleExtractor {
          * Switches layers so as not to repeat nodes and save memory this way.
         */
         for (let [entry] of this.graph.edgeSet) {
-            this.newLayer.add(entry);
+            this.newLayer.add(entry)
         }
-        let processedLayers = 0;
+        let processedLayers = 0
         let existsNegativeCycle = false;
-        let vertexCount = Object.keys(this.graph.edgeSet).length;
-        console.log("vertexCount: " + vertexCount);
+        let vertexCount = Object.keys(this.graph.edgeSet).length
+        console.log("vertexCount: " + vertexCount)
         while (!this.isEmpty(this.newLayer)) {
-            this.predecessorMap.clear();
-            this.currentLayer = this.newLayer;
-            this.newLayer = new Set();
+            this.predecessorMap.clear()
+            this.currentLayer = this.newLayer
+            this.newLayer = new Set<string>()
             for (let [entry] of this.currentLayer) {
                 for (let [_, outgoingEdge] of this.graph.edgeSet.get(entry)) {
-                    let relaxed = this.relaxEdge(outgoingEdge);
+                    let relaxed = this.relaxEdge(outgoingEdge)
                     if (relaxed && processedLayers > vertexCount) {
                         existsNegativeCycle = true;
                         this.currentNode = outgoingEdge.to;
@@ -42,35 +45,35 @@ export class negativeCycleExtractor {
             }
             if (processedLayers > vertexCount) {
                 break;
-            }
-            else {
+            } else {
                 processedLayers++;
             }
         }
         console.log("existsNegativeCycle: " + existsNegativeCycle); // control statement
+
         if (existsNegativeCycle) {
-            let cycle = this.getArbitrage();
-            this.printArbitrage(cycle);
+            let cycle = this.getArbitrage()
+            this.printArbitrage(cycle)
             return cycle;
         }
         return null;
     }
-    relaxEdge(edge) {
+    relaxEdge(edge: Edge): boolean {        
         /**
          * If distance can be improved, relaxes edge and puts it in predecessor map as it may belong to a negative cycle.
         */
-        let newToDistance = this.distanceSet.get(edge.from) + edge.weight;
+        let newToDistance = this.distanceSet.get(edge.from) + edge.weight
         if (newToDistance < this.distanceSet.get(edge.to)) {
-            this.distanceSet.set(edge.to, newToDistance);
-            this.newLayer.add(edge.to);
-            this.predecessorMap.set(edge.to, edge);
-            return true;
+            this.distanceSet.set(edge.to, newToDistance)
+            this.newLayer.add(edge.to)
+            this.predecessorMap.set(edge.to, edge)
+            return true
         }
-        return false;
+        return false
     }
-    getArbitrage() {
+    getArbitrage(): Edge[] {
         /**
-         * Finds negative cycle (repeated node in a set, called sentinel).
+         * Finds negative cycle (repeated node in a set, called sentinel). 
          * Reverses the list for convienience of reading; top to bottom.
          * Note to future self: Collections.reverse() returns void and alternates the param. Don't use it in print statements
          */
@@ -86,15 +89,15 @@ export class negativeCycleExtractor {
             this.cycle.push(this.predecessorMap.get(this.currentNode));
             this.currentNode = this.predecessorMap.get(this.currentNode).from;
         }
-        this.cycle.reverse();
+        this.cycle.reverse()
         return this.cycle;
     }
-    printArbitrage(cycle) {
+    printArbitrage(cycle: Edge[]): void {
         /**
          * Prints the arbitrage. ExchangeRatio and Total Exchange Power prints are for problems check: If they are unusually high,
          * it means that something went wrong such as an inconsistency. See getSEK.java.
         */
-        let exchangeRatio = 1.0;
+        let exchangeRatio = 1.0
         for (let edge of cycle) {
             console.log(edge.from);
             console.log(" -> ");
@@ -106,9 +109,10 @@ export class negativeCycleExtractor {
             console.log("\n\n");
             exchangeRatio *= Math.exp(-edge.weight);
         }
-        console.log("Total exchange power: " + exchangeRatio);
+        console.log("Total exchange power: "+ exchangeRatio)
     }
-    isEmpty(obj) {
+
+    isEmpty(obj: Set<string>): boolean {
         return Object.keys(obj).length == 0;
     }
 }

@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "watch": true,
+        "lib": ["DOM", "es2017"],
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true
+    }
+}

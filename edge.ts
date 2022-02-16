@@ -1,10 +1,10 @@
-class Edge {
+export class Edge {
     from: string
     to: string
     weight: number
     cantor: string
     
-    constructor(from, to, weight, cantor) {
+    constructor(from: string, to: string, weight: number, cantor: string) {
         this.from = from;   //source
         this.to = to;       //destination
         this.weight = weight;

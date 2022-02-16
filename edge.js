@@ -1,4 +1,4 @@
-class Edge {
+export class Edge {
     from;
     to;
     weight;

@@ -9,13 +9,13 @@ import { getEUR } from './getEUR.js';
 import { getEURESP } from './getEURESP.js';
 import { getPLN } from './getPLN.js';
 import { getSEK } from './getSEK.js';
-import { negativeCycleExtractor } from './extractor.js';
+import { NegativeCycleExtractor } from './extractor.js';
 let myGraph = new Graph();
 getSEK(myGraph);
 getPLN(myGraph);
 getEUR(myGraph);
 getEURESP(myGraph);
-let cycleOrNull = new negativeCycleExtractor(myGraph).extractNegativeCycleIfOneExists();
+let cycleOrNull = new NegativeCycleExtractor(myGraph).extractNegativeCycleIfOneExists();
 if (cycleOrNull != null) {
     console.log("Negative cycle found!");
 }
@@ -25,6 +25,6 @@ else {
 export const encodeRatio = num => {
     /**
      * Encodes Edge weights. If one wants to test-run with a flat or random values, this method can alternate the values completely.
-    */
+ */
     return -Math.log(num);
 };

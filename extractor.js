@@ -1,6 +1,6 @@
-export class negativeCycleExtractor {
-    graph;
+export class NegativeCycleExtractor {
     distanceSet;
+    graph;
     newLayer;
     currentLayer;
     predecessorMap;
@@ -8,8 +8,15 @@ export class negativeCycleExtractor {
     currentNode;
     cycle; //list of Edges
     constructor(edges) {
+        this.distanceSet = new Map();
+        this.newLayer = new Set();
+        this.currentLayer = new Set();
+        this.predecessorMap = new Map();
+        this.visitedSet = new Set();
+        this.currentNode = "";
+        this.cycle = new Array();
         this.graph = edges;
-        for (let [entry] of edges.edgeSet) {
+        for (let [entry] of edges.edgeSet.keys()) {
             this.distanceSet.set(entry, 0.0);
         }
     }
@@ -20,7 +27,8 @@ export class negativeCycleExtractor {
          * Reinitializes many variables per iteration, most notably predecessorMap as finding the negative cycle is based on it.
          * Switches layers so as not to repeat nodes and save memory this way.
         */
-        for (let [entry] of this.graph.edgeSet) {
+        for (let [entry] of this.graph.edgeSet.keys()) {
+            console.log("L27 extractor.ts " + entry);
             this.newLayer.add(entry);
         }
         let processedLayers = 0;
@@ -28,10 +36,11 @@ export class negativeCycleExtractor {
         let vertexCount = Object.keys(this.graph.edgeSet).length;
         console.log("vertexCount: " + vertexCount);
         while (!this.isEmpty(this.newLayer)) {
-            this.predecessorMap.clear();
+            if (this.predecessorMap)
+                this.predecessorMap.clear();
             this.currentLayer = this.newLayer;
             this.newLayer = new Set();
-            for (let [entry] of this.currentLayer) {
+            for (let [entry] of this.currentLayer.keys()) {
                 for (let [_, outgoingEdge] of this.graph.edgeSet.get(entry)) {
                     let relaxed = this.relaxEdge(outgoingEdge);
                     if (relaxed && processedLayers > vertexCount) {
@@ -109,6 +118,6 @@ export class negativeCycleExtractor {
         console.log("Total exchange power: " + exchangeRatio);
     }
     isEmpty(obj) {
-        return Object.keys(obj).length == 0;
+        return obj && Object.keys(obj).length == 0;
     }
 }

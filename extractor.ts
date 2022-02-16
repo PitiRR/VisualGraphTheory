@@ -1,20 +1,28 @@
 import {Graph} from './graph.js'
+import { Edge } from './Edge.js';
 
-export class negativeCycleExtractor {
-    graph: Graph
-    distanceSet: Map<string, number>
-    newLayer: Set<string>
-    currentLayer: Set<string>
-    predecessorMap: Map<string, Edge>
-    visitedSet: Set<string>
-    currentNode: string
-    cycle: Edge[] //list of Edges
+export class NegativeCycleExtractor {
+    distanceSet: Map<string, number>;
+    graph: Graph;
+    newLayer: Set<string>;
+    currentLayer: Set<string>;
+    predecessorMap: Map<string, Edge>;
+    visitedSet: Set<string>;
+    currentNode: string;
+    cycle: Array<Edge>; //list of Edges
 
     constructor(edges: Graph) { 
-        this.graph = edges
-        for (let [entry] of edges.edgeSet) {
-            this.distanceSet.set(entry, 0.0)
-        }
+        this.distanceSet = new Map();
+        this.newLayer = new Set();
+        this.currentLayer = new Set();
+        this.predecessorMap = new Map();
+        this.visitedSet = new Set();
+        this.currentNode = "";
+        this.cycle = new Array<Edge>();
+        this.graph = edges;
+            for (let [entry] of edges.edgeSet.keys()) {
+                this.distanceSet.set(entry, 0.0);
+            }
     }
     extractNegativeCycleIfOneExists(): Edge[] {
         /**
@@ -23,18 +31,21 @@ export class negativeCycleExtractor {
          * Reinitializes many variables per iteration, most notably predecessorMap as finding the negative cycle is based on it.
          * Switches layers so as not to repeat nodes and save memory this way.
         */
-        for (let [entry] of this.graph.edgeSet) {
-            this.newLayer.add(entry)
+        for (let [entry] of this.graph.edgeSet.keys()) {
+            console.log("L27 extractor.ts " + entry);
+            this.newLayer.add(entry);
         }
-        let processedLayers = 0
+        let processedLayers = 0;
         let existsNegativeCycle = false;
         let vertexCount = Object.keys(this.graph.edgeSet).length
         console.log("vertexCount: " + vertexCount)
+
         while (!this.isEmpty(this.newLayer)) {
-            this.predecessorMap.clear()
+            if(this.predecessorMap)
+                this.predecessorMap.clear()
             this.currentLayer = this.newLayer
             this.newLayer = new Set<string>()
-            for (let [entry] of this.currentLayer) {
+            for (let [entry] of this.currentLayer.keys()) {
                 for (let [_, outgoingEdge] of this.graph.edgeSet.get(entry)) {
                     let relaxed = this.relaxEdge(outgoingEdge)
                     if (relaxed && processedLayers > vertexCount) {
@@ -89,7 +100,7 @@ export class negativeCycleExtractor {
             this.cycle.push(this.predecessorMap.get(this.currentNode));
             this.currentNode = this.predecessorMap.get(this.currentNode).from;
         }
-        this.cycle.reverse()
+        this.cycle.reverse();
         return this.cycle;
     }
     printArbitrage(cycle: Edge[]): void {
@@ -112,7 +123,7 @@ export class negativeCycleExtractor {
         console.log("Total exchange power: "+ exchangeRatio)
     }
 
-    isEmpty(obj: Set<string>): boolean {
-        return Object.keys(obj).length == 0;
+    isEmpty(obj: Object): boolean {
+        return obj && Object.keys(obj).length == 0;
     }
 }

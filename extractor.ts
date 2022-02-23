@@ -1,4 +1,4 @@
-import {Graph} from './graph.js'
+import { Graph } from './graph.js'
 import { Edge } from './Edge.js';
 
 export class NegativeCycleExtractor {
@@ -11,18 +11,18 @@ export class NegativeCycleExtractor {
     currentNode: string;
     cycle: Array<Edge>; //list of Edges
 
-    constructor(edges: Graph) { 
-        this.distanceSet = new Map();
-        this.newLayer = new Set();
-        this.currentLayer = new Set();
-        this.predecessorMap = new Map();
-        this.visitedSet = new Set();
-        this.currentNode = "";
+    constructor(edges: Graph) {
+        this.distanceSet = new Map<string, number>();
+        this.newLayer = new Set<string>();
+        this.currentLayer = new Set<string>();
+        this.predecessorMap = new Map<string, Edge>();
+        this.visitedSet = new Set<string>();
+        this.currentNode = '';
         this.cycle = new Array<Edge>();
         this.graph = edges;
-            for (let [entry] of edges.edgeSet.keys()) {
-                this.distanceSet.set(entry, 0.0);
-            }
+        for (let entry of edges.edgeSet.keys()) {
+            this.distanceSet.set(entry, 0.0);
+        }
     }
     extractNegativeCycleIfOneExists(): Edge[] {
         /**
@@ -31,23 +31,25 @@ export class NegativeCycleExtractor {
          * Reinitializes many variables per iteration, most notably predecessorMap as finding the negative cycle is based on it.
          * Switches layers so as not to repeat nodes and save memory this way.
         */
-        for (let [entry] of this.graph.edgeSet.keys()) {
-            console.log("L27 extractor.ts " + entry);
+        let processedLayers: number = 0;
+        let existsNegativeCycle: boolean = false;
+        let vertexCount: number = Object.keys(this.graph.edgeSet).length;
+
+        for (let entry of this.graph.edgeSet.keys()) {
+            console.log("L39 extractor.ts " + entry);
             this.newLayer.add(entry);
         }
-        let processedLayers = 0;
-        let existsNegativeCycle = false;
-        let vertexCount = Object.keys(this.graph.edgeSet).length
-        console.log("vertexCount: " + vertexCount)
+        console.log("[extractor.ts 41] vertexCount: " + vertexCount);
 
         while (!this.isEmpty(this.newLayer)) {
-            if(this.predecessorMap)
-                this.predecessorMap.clear()
-            this.currentLayer = this.newLayer
+            if(this.predecessorMap) {
+                this.predecessorMap.clear();
+            }
+            this.currentLayer = this.newLayer;
             this.newLayer = new Set<string>()
             for (let [entry] of this.currentLayer.keys()) {
                 for (let [_, outgoingEdge] of this.graph.edgeSet.get(entry)) {
-                    let relaxed = this.relaxEdge(outgoingEdge)
+                    let relaxed: boolean = this.relaxEdge(outgoingEdge);
                     if (relaxed && processedLayers > vertexCount) {
                         existsNegativeCycle = true;
                         this.currentNode = outgoingEdge.to;
@@ -60,11 +62,11 @@ export class NegativeCycleExtractor {
                 processedLayers++;
             }
         }
-        console.log("existsNegativeCycle: " + existsNegativeCycle); // control statement
+        console.log("[extractor.ts 63] existsNegativeCycle: " + existsNegativeCycle); // control statement
 
         if (existsNegativeCycle) {
-            let cycle = this.getArbitrage()
-            this.printArbitrage(cycle)
+            let cycle = this.getArbitrage();
+            this.printArbitrage(cycle);
             return cycle;
         }
         return null;
@@ -73,14 +75,14 @@ export class NegativeCycleExtractor {
         /**
          * If distance can be improved, relaxes edge and puts it in predecessor map as it may belong to a negative cycle.
         */
-        let newToDistance = this.distanceSet.get(edge.from) + edge.weight
+        let newToDistance: number = this.distanceSet.get(edge.from) + edge.weight;
         if (newToDistance < this.distanceSet.get(edge.to)) {
-            this.distanceSet.set(edge.to, newToDistance)
-            this.newLayer.add(edge.to)
-            this.predecessorMap.set(edge.to, edge)
-            return true
+            this.distanceSet.set(edge.to, newToDistance);
+            this.newLayer.add(edge.to);
+            this.predecessorMap.set(edge.to, edge);
+            return true;
         }
-        return false
+        return false;
     }
     getArbitrage(): Edge[] {
         /**
@@ -108,7 +110,7 @@ export class NegativeCycleExtractor {
          * Prints the arbitrage. ExchangeRatio and Total Exchange Power prints are for problems check: If they are unusually high,
          * it means that something went wrong such as an inconsistency. See getSEK.java.
         */
-        let exchangeRatio = 1.0
+        let exchangeRatio: number = 1;
         for (let edge of cycle) {
             console.log(edge.from);
             console.log(" -> ");
@@ -120,7 +122,7 @@ export class NegativeCycleExtractor {
             console.log("\n\n");
             exchangeRatio *= Math.exp(-edge.weight);
         }
-        console.log("Total exchange power: "+ exchangeRatio)
+        console.log("Total exchange power: "+ exchangeRatio);
     }
 
     isEmpty(obj: Object): boolean {

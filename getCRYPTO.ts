@@ -1,0 +1,51 @@
+import axios from 'axios';
+import cheerio from 'cheerio';
+import { encodeRatio } from './app.js';
+import { Edge } from './Edge.js';
+import { Graph } from './graph.js';
+export const getCRYPTO = async (graph: Graph): Promise<void> => {
+    const url = 'https://coinmarketcap.com/'; //actual currencies
+    try {
+        let {data} = await axios.get(url);
+		const $ = cheerio.load(data);
+        const fee: number = await getFee();
+        let tempValueList: number[] = [];
+        let shortNameList: string[] = [];
+        $('tr > td:nth-child(4) > div:nth-child(1) > a:nth-child(1) > span:nth-child(1)').each((_, elem) => {
+            tempValueList.push(parseFloat($(elem).text().replace(/\$|\,/g,'')));
+		});
+        $('tr > td:nth-child(3) > div:nth-child(1) > a:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > p:nth-child(2)').each((_, elem) => {
+            shortNameList.push($(elem).text());
+		});
+        // for(let item of tempValueList) {
+        //     console.log(item)
+        // }
+        // for(let item of shortNameList) {
+        //     console.log(item)
+        // }
+        for(let i = 0; i < tempValueList.length; i++) {
+            //console.log(shortNameList[i] + " Sell: "+" Buy: "+tempValueList[i]+typeof(tempValueList[i])+" Fee: "+fee+typeof(fee))
+            graph.insertOrImproveEdge(new Edge("USD", shortNameList[i], encodeRatio(1 / (tempValueList[i] - fee)), url));
+            graph.insertOrImproveEdge(new Edge(shortNameList[i], "USD", encodeRatio(tempValueList[i] - fee), url));
+        }
+    } catch (error) {
+		throw error;
+	}
+}
+
+const getFee = async (): Promise<number> => {
+    /**
+     * https://stackoverflow.com/a/43881454/18004804
+     */
+    let url = 'https://coinmarketcap.com/currencies/transaction-service-fee/'; //fee of transaction
+    try {
+        let {data} = await axios.get(url);
+		let $ = cheerio.load(data);
+        return new Promise<number>((resolve) => {
+            resolve(parseFloat($('.priceValue > span:nth-child(1)').text().replace('\$', '')));
+        });
+            
+    } catch (error) {
+        throw error;
+    }
+}

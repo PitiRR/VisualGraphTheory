@@ -1,22 +1,14 @@
 export class NegativeCycleExtractor {
-    distanceSet;
-    graph;
-    newLayer;
-    currentLayer;
-    predecessorMap;
-    visitedSet;
-    currentNode;
-    cycle; //list of Edges
     constructor(edges) {
         this.distanceSet = new Map();
         this.newLayer = new Set();
         this.currentLayer = new Set();
         this.predecessorMap = new Map();
         this.visitedSet = new Set();
-        this.currentNode = "";
+        this.currentNode = '';
         this.cycle = new Array();
         this.graph = edges;
-        for (let [entry] of edges.edgeSet.keys()) {
+        for (let entry of edges.edgeSet.keys()) {
             this.distanceSet.set(entry, 0.0);
         }
     }
@@ -27,17 +19,18 @@ export class NegativeCycleExtractor {
          * Reinitializes many variables per iteration, most notably predecessorMap as finding the negative cycle is based on it.
          * Switches layers so as not to repeat nodes and save memory this way.
         */
-        for (let [entry] of this.graph.edgeSet.keys()) {
-            console.log("L27 extractor.ts " + entry);
-            this.newLayer.add(entry);
-        }
         let processedLayers = 0;
         let existsNegativeCycle = false;
         let vertexCount = Object.keys(this.graph.edgeSet).length;
-        console.log("vertexCount: " + vertexCount);
+        for (let entry of this.graph.edgeSet.keys()) {
+            console.log("L39 extractor.ts " + entry);
+            this.newLayer.add(entry);
+        }
+        console.log("[extractor.ts 41] vertexCount: " + vertexCount);
         while (!this.isEmpty(this.newLayer)) {
-            if (this.predecessorMap)
+            if (this.predecessorMap) {
                 this.predecessorMap.clear();
+            }
             this.currentLayer = this.newLayer;
             this.newLayer = new Set();
             for (let [entry] of this.currentLayer.keys()) {
@@ -56,7 +49,7 @@ export class NegativeCycleExtractor {
                 processedLayers++;
             }
         }
-        console.log("existsNegativeCycle: " + existsNegativeCycle); // control statement
+        console.log("[extractor.ts 63] existsNegativeCycle: " + existsNegativeCycle); // control statement
         if (existsNegativeCycle) {
             let cycle = this.getArbitrage();
             this.printArbitrage(cycle);
@@ -103,7 +96,7 @@ export class NegativeCycleExtractor {
          * Prints the arbitrage. ExchangeRatio and Total Exchange Power prints are for problems check: If they are unusually high,
          * it means that something went wrong such as an inconsistency. See getSEK.java.
         */
-        let exchangeRatio = 1.0;
+        let exchangeRatio = 1;
         for (let edge of cycle) {
             console.log(edge.from);
             console.log(" -> ");

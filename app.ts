@@ -12,23 +12,22 @@ import { getSEK } from './getSEK.js';
 import { NegativeCycleExtractor } from './extractor.js';
 import { Edge } from './Edge.js';
 
+export const encodeRatio = (num: number) => {
+    /**
+     * Encodes Edge weights. If one wants to test-run with a flat or random values, this method can alternate the values completely.
+    */
+    return -Math.log(num);
+}
+
 let myGraph: Graph = new Graph();
-getSEK(myGraph);
-getPLN(myGraph);
-getEUR(myGraph);
-getCRYPTO(myGraph);
-console.log(myGraph.edgeSet)
+await getSEK(myGraph);
+await getPLN(myGraph);
+await getEUR(myGraph);
+await getCRYPTO(myGraph);
 let cycleOrNull: Edge[] = new NegativeCycleExtractor(myGraph).extractNegativeCycleIfOneExists();
 
 if(cycleOrNull != null) {
     console.log("[app.ts 22] Success! Negative cycle found.");
 } else { 
     console.log("[app.ts 24] No negative cycle found.");
-}
-
-export const encodeRatio = (num: number) => {
-    /**
-     * Encodes Edge weights. If one wants to test-run with a flat or random values, this method can alternate the values completely.
-    */
-    return -Math.log(num);
 }

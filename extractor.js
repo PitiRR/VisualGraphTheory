@@ -1,4 +1,12 @@
 export class NegativeCycleExtractor {
+    distanceSet;
+    graph;
+    newLayer;
+    currentLayer;
+    predecessorMap;
+    visitedSet;
+    currentNode;
+    cycle; //list of Edges
     constructor(edges) {
         this.distanceSet = new Map();
         this.newLayer = new Set();
@@ -21,9 +29,9 @@ export class NegativeCycleExtractor {
         */
         let processedLayers = 0;
         let existsNegativeCycle = false;
-        let vertexCount = Object.keys(this.graph.edgeSet).length;
+        let vertexCount = this.graph.edgeSet.size;
         for (let entry of this.graph.edgeSet.keys()) {
-            console.log("L39 extractor.ts " + entry);
+            //console.log("[extractor.ts 39] populating newLayer: " + entry);
             this.newLayer.add(entry);
         }
         console.log("[extractor.ts 41] vertexCount: " + vertexCount);
@@ -33,7 +41,7 @@ export class NegativeCycleExtractor {
             }
             this.currentLayer = this.newLayer;
             this.newLayer = new Set();
-            for (let [entry] of this.currentLayer.keys()) {
+            for (let entry of this.currentLayer.keys()) {
                 for (let [_, outgoingEdge] of this.graph.edgeSet.get(entry)) {
                     let relaxed = this.relaxEdge(outgoingEdge);
                     if (relaxed && processedLayers > vertexCount) {
@@ -74,14 +82,14 @@ export class NegativeCycleExtractor {
         /**
          * Finds negative cycle (repeated node in a set, called sentinel).
          * Reverses the list for convienience of reading; top to bottom.
-         * Note to future self: Collections.reverse() returns void and alternates the param. Don't use it in print statements
          */
+        console.log("[extractor.ts 92] Getting arbitrage...");
         while (!this.visitedSet.has(this.currentNode)) {
             this.visitedSet.add(this.currentNode);
             this.currentNode = this.predecessorMap.get(this.currentNode).from;
         }
         let sentinel = this.currentNode;
-        console.log("sentinel: " + sentinel);
+        console.log("[extractor.ts 98] sentinel: " + sentinel);
         this.currentNode = this.predecessorMap.get(this.currentNode).from;
         this.cycle.push(this.predecessorMap.get(sentinel));
         while (this.currentNode != sentinel) {
@@ -111,6 +119,9 @@ export class NegativeCycleExtractor {
         console.log("Total exchange power: " + exchangeRatio);
     }
     isEmpty(obj) {
+        /*
+         * Custom method to check if an object (Map, Set, etc. is empty)
+        */
         return obj && Object.keys(obj).length == 0;
     }
 }

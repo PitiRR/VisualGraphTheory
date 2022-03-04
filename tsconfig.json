@@ -1,9 +1,11 @@
 {
-    "compilerOptions": {
-        "target": "es2021",
-        "watch": true,
-        "lib": ["DOM", "es2021"],
-        "moduleResolution": "node",
-        "allowSyntheticDefaultImports": true
-    }
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "watch": true,
+    "lib": [ "DOM", "es2021" ],
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": false
+  }
 }

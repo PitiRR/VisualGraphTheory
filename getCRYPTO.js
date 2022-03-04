@@ -16,14 +16,7 @@ export const getCRYPTO = async (graph) => {
         $('tr > td:nth-child(3) > div:nth-child(1) > a:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > p:nth-child(2)').each((_, elem) => {
             shortNameList.push($(elem).text());
         });
-        // for(let item of tempValueList) {
-        //     console.log(item)
-        // }
-        // for(let item of shortNameList) {
-        //     console.log(item)
-        // }
         for (let i = 0; i < tempValueList.length; i++) {
-            //console.log(shortNameList[i] + " Sell: "+" Buy: "+tempValueList[i]+typeof(tempValueList[i])+" Fee: "+fee+typeof(fee))
             graph.insertOrImproveEdge(new Edge("USD", shortNameList[i], encodeRatio(1 / (tempValueList[i] - fee)), url));
             graph.insertOrImproveEdge(new Edge(shortNameList[i], "USD", encodeRatio(tempValueList[i] - fee), url));
         }

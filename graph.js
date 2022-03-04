@@ -1,4 +1,5 @@
 export class Graph {
+    edgeSet;
     constructor() {
         this.edgeSet = new Map();
     }

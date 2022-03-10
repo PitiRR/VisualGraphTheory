@@ -1,12 +1,27 @@
 export class NegativeCycleExtractor {
+    /**
+    * This file contains all relevant algorithms to searching through the graphs as well as finding negative cycle (arbitrage).
+    * This program uses Bellman-Ford algorithm. Since distances can be negative, this is preferable to Dijkstra's.
+    * Additionally, finding negative cycle is essentially equivalent to finding an arbitrage (taking advantage of differing prices to gain profit)
+    * @exports NegativeCycleExtractor
+    * @property {Map<string, number>} distanceSet
+    * @param {Graph} edges graph containing all currency information, imported from app.ts.
+    * @property {Set<string>} newLayer
+    * @property {Set<string>} currentLayer
+    * @property {Map<string, Edge>} predecessorMap
+    * @property {Set<string>} visitedSet
+    * @property {string} currentNode
+    * @property {Array<Edge>} cycle list of edges in "correct" order
+    * @version 1.0.0
+    */
     distanceSet;
-    graph;
+    edges;
     newLayer;
     currentLayer;
     predecessorMap;
     visitedSet;
     currentNode;
-    cycle; //list of Edges
+    cycle;
     constructor(edges) {
         this.distanceSet = new Map();
         this.newLayer = new Set();
@@ -15,7 +30,7 @@ export class NegativeCycleExtractor {
         this.visitedSet = new Set();
         this.currentNode = '';
         this.cycle = new Array();
-        this.graph = edges;
+        this.edges = edges;
         for (let entry of edges.edgeSet.keys()) {
             this.distanceSet.set(entry, 0.0);
         }
@@ -26,11 +41,17 @@ export class NegativeCycleExtractor {
          * To save memory and time, uses hashsets and keys (nodes / edge.from) for the lookup and update complexity.
          * Reinitializes many variables per iteration, most notably predecessorMap as finding the negative cycle is based on it.
          * Switches layers so as not to repeat nodes and save memory this way.
+         * @property {number} processedLayers number of searches madein the graph. Used to find out if there is a negative cycle
+         *      (if there are more iterations/searches/loops than there are vertices, then there is something going on.)
+         * @property {boolean} existsNegativeCycle Checks if arbitrage (negative cycle) exists in the graph. Created to make detection readable and explicit.
+         * @property {number} vertexCount parameterized number of edges in the graph. Created for readability and checking if negative cycle exists.
+         * @property {boolean} relaxed verifies if the outgoing edge can be relaxed (improved). Used to verify if there is negative cycle, edge relaxation occurs
+         * @returns {Edge[]} list of ordered edges that contain arbitrage
         */
         let processedLayers = 0;
         let existsNegativeCycle = false;
-        let vertexCount = this.graph.edgeSet.size;
-        for (let entry of this.graph.edgeSet.keys()) {
+        let vertexCount = this.edges.edgeSet.size;
+        for (let entry of this.edges.edgeSet.keys()) {
             //console.log("[extractor.ts 39] populating newLayer: " + entry);
             this.newLayer.add(entry);
         }
@@ -42,7 +63,7 @@ export class NegativeCycleExtractor {
             this.currentLayer = this.newLayer;
             this.newLayer = new Set();
             for (let entry of this.currentLayer.keys()) {
-                for (let [_, outgoingEdge] of this.graph.edgeSet.get(entry)) {
+                for (let [_, outgoingEdge] of this.edges.edgeSet.get(entry)) {
                     let relaxed = this.relaxEdge(outgoingEdge);
                     if (relaxed && processedLayers > vertexCount) {
                         existsNegativeCycle = true;
@@ -68,6 +89,9 @@ export class NegativeCycleExtractor {
     relaxEdge(edge) {
         /**
          * If distance can be improved, relaxes edge and puts it in predecessor map as it may belong to a negative cycle.
+         * @param {number} newToDistance updates the TO distance
+         * @returns {boolean}
+         * @version 1.0.0
         */
         let newToDistance = this.distanceSet.get(edge.from) + edge.weight;
         if (newToDistance < this.distanceSet.get(edge.to)) {
@@ -82,6 +106,7 @@ export class NegativeCycleExtractor {
         /**
          * Finds negative cycle (repeated node in a set, called sentinel).
          * Reverses the list for convienience of reading; top to bottom.
+         * @returns {Edge[]} list of edges in order.
          */
         console.log("[extractor.ts 92] Getting arbitrage...");
         while (!this.visitedSet.has(this.currentNode)) {
@@ -102,7 +127,10 @@ export class NegativeCycleExtractor {
     printArbitrage(cycle) {
         /**
          * Prints the arbitrage. ExchangeRatio and Total Exchange Power prints are for problems check: If they are unusually high,
-         * it means that something went wrong such as an inconsistency. See getSEK.java.
+         * it means that something went wrong such as an inconsistency. Some cantors provide inconsistent data and formats to fight
+         * against programs like this.
+         * @param {Edge[]} cycle list of edges to be printed
+         * @version 1.0.0
         */
         let exchangeRatio = 1;
         for (let edge of cycle) {
@@ -119,8 +147,9 @@ export class NegativeCycleExtractor {
         console.log("Total exchange power: " + exchangeRatio);
     }
     isEmpty(obj) {
-        /*
-         * Custom method to check if an object (Map, Set, etc. is empty)
+        /**
+         * Custom method to check if an object (Map, Set, etc.) is empty
+         * @param {Object} obj object that has KV pairs (or doesn't, we're checking).
         */
         return obj && Object.keys(obj).length == 0;
     }

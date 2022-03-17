@@ -1,17 +1,17 @@
 import { SimulationNodeDatum, SimulationLinkDatum } from 'd3';
 import { Edge } from './Edge.js';
-interface IJSON {
+export interface IJSON {
     nodes: Inodes[],
     links: Ilinks[]
 }
 export interface Inodes extends SimulationNodeDatum {
     //id: number, //commented as not needed at the moment
-    name: string, //from
+    name: string | number //from/source node, can be used as a numeric ID
 }
 
-export interface Ilinks extends SimulationLinkDatum {
-    source: string,
-    target: string,
+export interface Ilinks extends SimulationLinkDatum<SimulationNodeDatum> {
+    source: string | number, //allows numeric identification in case numeric ID is used as a name
+    target: string | number,
     weight: number,
     cantor: string
 }

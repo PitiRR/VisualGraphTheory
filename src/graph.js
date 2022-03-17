@@ -39,6 +39,7 @@ export class Graph {
          * Example: https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_network.json
          * Since our map contains both, we need to 'expand' it. This method takes care of it.
          * Notice that d3 requires string, but I want to leave this method as an actual object for the purpose of abstraction.
+         * https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/dc27c3788c00d279ae5ff61e8e2dfd568aae5e8e/types/d3-force/index.d.ts
          * @returns a JSON in a format ready for d3
          * @version 1.0.0
          */
@@ -48,7 +49,7 @@ export class Graph {
             let node = { name: `${i[0]}` };
             nodes.push(node);
             for (let j of i[1]) { //j is Map<destination: string, edge: Edge>
-                let link = { from: j[1].from, to: j[1].to, weight: j[1].weight, cantor: j[1].cantor };
+                let link = { source: j[1].from, target: j[1].to, weight: j[1].weight, cantor: j[1].cantor };
                 links.push(link);
             }
         }

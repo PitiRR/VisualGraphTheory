@@ -5,7 +5,6 @@ export interface IJSON {
     links: Ilinks[]
 }
 export interface Inodes extends SimulationNodeDatum {
-    //id: number, //commented as not needed at the moment
     name: string | number //from/source node, can be used as a numeric ID
 }
 
@@ -13,7 +12,8 @@ export interface Ilinks extends SimulationLinkDatum<SimulationNodeDatum> {
     source: string | number, //allows numeric identification in case numeric ID is used as a name
     target: string | number,
     weight: number,
-    cantor: string
+    cantor: string,
+    cycle: boolean
 }
 export class Graph {
     edgeSet: Map<string, Map<string, Edge>>;
@@ -48,7 +48,7 @@ export class Graph {
         }
     }
     
-    generateJSON = (): IJSON => {
+    generateJSON = (cycleOrNull: Edge[]): IJSON => {
     /**
      * d3 requires a specific format of a network;
      * A single JSON that contains two attributes, that in turn contains a list of nodes and links
@@ -65,7 +65,7 @@ export class Graph {
             let node = {name: `${i[0]}`}
             nodes.push(node)
             for (let j of i[1]) { //j is Map<destination: string, edge: Edge>
-                let link = {source: j[1].from, target: j[1].to, weight: j[1].weight, cantor: j[1].cantor}
+                let link = {source: j[1].from, target: j[1].to, weight: j[1].weight, cantor: j[1].cantor, cycle: isPartOfCycle(cycleOrNull, j)}
                 links.push(link)
             }
         }
@@ -75,4 +75,21 @@ export class Graph {
         };
         return returnJSON;
     }
+}
+
+const isPartOfCycle = (cycleOrNull: Edge[], j: [string, Edge]): boolean => {
+    /**
+     * In order for d3 to visualize (e.g. stroke colour, style, width) links that belong to a negative cycle/arbitrage, it must know if 
+     * something belongs to a cycle. This method allows the optional parameter cycle? of ILinks to be in a link in the JSON object.
+     * This allows d3 to know which links to colour differntly.
+     * This method compares links in cycleOrNull (returns false if cycleOrNull is null obviously) to the one being compared in
+     * generateJSON()
+     * @returns true or false depending if the edge is in cycleOrNull
+     * @version 1.0.0
+     */
+    if (!cycleOrNull) {
+        return false;
+    } return cycleOrNull.some(e => (e.from === j[1].from && 
+                                e.to === j[1].to && 
+                                e.cantor === j[1].cantor))
 }

@@ -1,5 +1,21 @@
 <!DOCTYPE html>
+<meta charset="utf-8">
 <html lang="en">
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- below: used as tooltip to nodes -->
+    <style> 
+      div.tooltip {
+        position: absolute;
+        text-align: center;
+        padding: .5rem;
+        background: #FFFFFF;
+        color: #313639;
+        border: 1px solid #313639;
+        border-radius: 8px;
+        pointer-events: none;
+        font-size: 1rem;
+    }
+    </style>
     <head>
     <%- include('../partials/head'); %>
     </head>
@@ -11,39 +27,180 @@
 
     <main>
     <div class="jumbotron">
-        <h1>This is great</h1>
-        <p>Welcome to Arbitrage visualizer</p>
+        <h1>Welcome to the Arbitrage visualizer</h1>
+        <p>Below are the results of the arbitrage search.
+          <% if(path) { %>
+            There exists a negative cycle! See highlighted links below.
+            <% } else { %>
+              Unfortunately, no negative cycle has been found at this time.
+          <% } %>
+        </p>
     </div>
     <div class="jumbotron">
-        <h1>Here's the data</h1>
-        <p>
-            <%= graph.nodes %>
+        <h1>Here's the data:</h1>
+        <div>
+          <code><div><%= JSON.stringify(graph, null, 1) %></div></code>
+          <div>
             <% if(path) { path } else { %>
                 <p>No negative cycle found.</p>
             <% } %>
-        </p>
-        <div id="my_dataviz"></div>
+          </div>
+        </div>
+    </div>
+    <div class="jumbotron" id="my_dataviz">
+      <h1>Here's the graph:</h1>
     </div>
     </main>
-
     <footer>
     <%- include('../partials/footer'); %>
     </footer>
 
     </body>
-    <script src="https://d3js.org/d3.v7.js">
-        var margin = {top: 10, right: 30, bottom: 30, left: 40},
-            width = 400 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
+    <script>
+        var margin = {top: 10, right: 0, bottom: 30, left: 0},
+          width = 1000 - margin.left - margin.right,
+          height = 1000 - margin.top - margin.bottom;
+        
+        // Creating the network object and appending it. This is the "canvas"
         var svg = d3.select("#my_dataviz")
-            .append("svg")
-              .attr("width", width + margin.left + margin.right)
-              .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-              .attr("transform",
-                    "translate(" + margin.left + "," + margin.top + ")");
-        d3.json(graph, function(data) {
+        .append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+          .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+        // Quickstart guide: Download 'Live Server' extension on VSC and host the directory. 
+        // Port 5500 should be the default.
+        d3.json("http://127.0.0.1:5500/JSONs/myGraph.json", (data) => {
+          // Node tooltip at default, will show on hover
+          var div = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+          // Initialization of the links and their description
+          var link = svg
+            .selectAll("line")
+            .data(data.links)
+            .enter()
+            .append("line")
+              .style("stroke", function(d) {
+                return !d.cycle ? "#aaa" : "#fe4545"}) //checks if the links belongs to a cycle
+              .style("stroke-width", function(d) {
+                return normalizeWeight(d.weight)
+              })
+        
+          // Initialization of the nodes and their description
+          var node = svg
+            .selectAll("circle")
+            .data(data.nodes)
+            .enter()
+            .append("circle")
+              .attr("r", 10)
+              .style("fill", "#69b3a2")
+            .on('mouseover', function (d, i) {
+              d3.select(this).style("fill", function() {
+                  return d3.rgb(d3.select(this).style("fill")).darker(0.33);
+              });
+              div.transition()
+                .duration(50)
+                .style("opacity", 1);
+              let name = d.name;
+              div.html(name)
+                .style("left", (d3.event.pageX + 10) + "px")
+                .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+              d3.select(this).style("fill", function() {
+                  return d3.rgb(d3.select(this).style("fill")).brighter(0.33);
+              });
+              div.transition()
+                .duration('50')
+                .style("opacity", 0);
+            })
+            .call(d3.drag()
+              .on("start", dragstarted)
+              .on("drag", dragged)
+              .on("end", dragended))
+          var simulation = d3.forceSimulation(data.nodes)
+              .force("link", d3.forceLink()                             // This provides links between nodes
+                    .id(function(d) { return d.name })                  // This provides the id of a node. In this case, name/code of the currency. They're unique in this scenario.
+                    .links(data.links)                                  // This provides the source data of the links
+              )
+              .force("charge", d3.forceManyBody().strength(-600))       // This adds repulsion between nodes. Positive value equals attraction. Generally used to "scale" the network
+              .force("center", d3.forceCenter(width / 2, height / 2))   // This force attracts nodes to the center of the svg area
+              .on("tick", ticked);
+          // TODO: Create interactivity
+          // https://www.d3indepth.com/interaction/
+          function ticked() {
+            link
+              .attr("x1", function(d) { return d.source.x; })
+              .attr("y1", function(d) { return d.source.y; })
+              .attr("x2", function(d) { return d.target.x; })
+              .attr("y2", function(d) { return d.target.y; });
+            node
+              .attr("cx", function(d) { return d.x; })
+              .attr("cy", function(d) { return d.y; });
+          }
+            function dragstarted(d) {
+              // fx and fy values are used to assign a new position given by us.
+              // API reference to fx and fy values: https://github.com/d3/d3-force/blob/v3.0.0/README.md#simulation_nodes
+
+              // Once dragging is detected, it sets alphaTarget to >0, allowing the interaction to start. 
+              // The simulation stops at 0. See dragended() for other implications of this.
+              if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+              d.fx = d.x;
+              d.fy = d.y;
+            }
             
+            function dragged(d) {
+              // The actual drag mechanics
+              d.fx = d3.event.x;
+              d.fy = d3.event.y;
+            }
+            
+            function dragended(d) {
+              // Since the simulation stops at alphaTarget == 0, this can be beneficial for performance (alphaTarget is updated at each tick).
+              // Once we are not dragging, or the drag (alphaTarget) is found to be so small it approaches 0, we end the drag event.
+              // We disable fx and fy since if we leave them to certain value they will be fixed to that value.
+              if (!d3.event.active) simulation.alphaTarget(0);
+              d.fx = null;
+              d.fy = null;
+            }
+          function normalizeWeight(val) {
+            /**
+             * This method normalizes the link weight between min and max variables.
+             * It exists to make links have varying stroke width depending on link.weight,
+             * But without odd outliers.
+             */
+            let min = 1
+            let max = 4
+            return (val - min) / (max - min)
+          }
         });
-    </script>
+  </script>
+  <script>
+    var data = graph;
+    var keys = [];
+    document.write("<table border==\"1\"><tr>");
+    for (key in data[0]) {
+      document.write('<td>' + key + '</td>');
+    }
+    document.write("</tr>");
+    for (var i = 0; i < data.length; i++) {
+      document.write('<tr>');
+      for (key in data[i]) {
+        document.write('<td>' + data[i][key] + '</td>');
+      }
+      document.write('</tr>');
+    }
+    document.write("</table>");
+  </script>
 </html>
+
+<!--
+  Idea for coloring negative cycle:
+  Use idea from https://observablehq.com/@d3/force-directed-graph
+  Make each link color. The logic will be implemented in the backend.
+  Then call the .attr("stroke-color", link.color) method or something
+  Make it optional, such as:
+  if (W) link.attr("stroke-width", ({index: i}) => W[i]);
+-->

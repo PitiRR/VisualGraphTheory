@@ -52,10 +52,9 @@ export class NegativeCycleExtractor {
         let existsNegativeCycle = false;
         let vertexCount = this.edges.edgeSet.size;
         for (let entry of this.edges.edgeSet.keys()) {
-            //console.log("[extractor.ts 39] populating newLayer: " + entry);
             this.newLayer.add(entry);
         }
-        console.log("[extractor.ts 41] vertexCount: " + vertexCount);
+        console.log(`${new Date().toLocaleTimeString()} [extractor.ts 63] vertexCount:  ${vertexCount}`);
         while (!this.isEmpty(this.newLayer)) {
             if (this.predecessorMap) {
                 this.predecessorMap.clear();
@@ -78,7 +77,7 @@ export class NegativeCycleExtractor {
                 processedLayers++;
             }
         }
-        console.log("[extractor.ts 63] existsNegativeCycle: " + existsNegativeCycle); // control statement
+        console.log(`${new Date().toLocaleTimeString()} [extractor.ts 86] existsNegativeCycle: ${existsNegativeCycle}`); // control statement
         if (existsNegativeCycle) {
             let cycle = this.getArbitrage();
             this.printArbitrage(cycle);

@@ -10,20 +10,105 @@
 </header>
 
 <main>
-<div class="row">
-  <div class="col-sm-8">
-    <div class="jumbotron">
-      <h1>This is great</h1>
-      <p>Welcome to templating using EJS</p>
-    </div>
-  </div>
+  <div class="jumbotron">
+    <h1>About the Arbitrage Visualizer</h1>
+    <hr class="my-4">
+    <h1>What's that?</h1>
+    <p>
+      <blockquote class="blockquote">
+        <p>Arbitrage is the simultaneous purchase and sale of the same asset in different markets in order to profit from tiny differences in the asset's listed price. It exploits short-lived variations in the price of identical or similar financial instruments in different markets or in different forms.</p>
+        <footer class="blockquote-footer">Investopedia page for <cite><a href="https://www.investopedia.com/terms/a/arbitrage.asp">Arbitrage</a></cite></footer>
+      </blockquote>
+    </p>
+    <p>The Arbitrage Visualizer (app from now on) is the program that, using graph theory, finds a negative cycle inside a graph of currencies 
+      downloaded online. It uses real-life data from online currency exchanges (including one with cryptocurrencies). 
+    </p>
 
-  <div class="col-sm-4">
-    <div class="well">
-      <h3>Look I'm A Sidebar!</h3>
-    </div>
+    <hr class="my-4">
+    <h1>How does it work?</h1>
+    <p>At the heart of this app is the <a href="https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">Bellman-Ford Algorithm</a>. It is 
+      similar to the famous Dijkstra's algorithm, however B-F allows for negative values to occur in the network, often called negative weights. 
+      For this reason, it is possible to find a negative cycle. In this context, a negative cycle implies a loop that infinitely grows or shrinks - an arbitrage - an infinite and risk-free
+      profit!</p>
+    <p>The architecture of the app is very easily maintanable and scalable. Each cantor has its own method, and it's called once in <code>app.ts</code>. What if there is an 
+      overlap? The <code>insertOrImproveEdge()</code> method in <code>graph.ts</code> takes care of that, either by updating the data or inserting it as a new vertex, also 
+      called an Edge in the code. Additionally, unique approaches can be used to gather information from different sources. Just because cheerio was
+      used to collect information from one place, does not mean you can't download and parse a JSON in another file.
+    </p>
+    <p>The code itself is also written in a pretty smart way. To utilize the <var>O</var>(<var>n</var>) lookup time of a hashtable, this app uses 
+      those many times - there is even a hashtable of a hashtable present.
+    </p>
+    <p>The language of choice for this app is Typescript, as it fits multiple needs at the same time;
+    <ul>
+      <li>It is strongly and statically typed, which is especially useful in development time;</li>
+      <li>It is a subset of JS, which means all JS libraries work with it, and many have a dedicated package <code>@types/</code>;</li>
+      <li>d3 has a few quirks and requirements, and interfacing helped in development and debugging to adjust to the library;</li>
+      <li>I just enjoy writing in it!</li>
+    </ul>
+    You may recall in my mid-term report that I had the backend written in Java. It was indeed fully working, however due to lack of supported or 
+    appropiate visualization libraries I was <i>forced</i> to use JS. As the code was already OOP-focused, I had difficulties making it work as I
+    wanted to, so I eventually switched to TS. Funnily enough, learning TS took less time than learning cheerio library, here used for scraping online 
+    data.
+    </p>
+    <p>Additionaly, using the <a href="https://d3js.org/">d3js</a> library, the graphs are visualized in an interactive manner.</p>
+    <p>Full list of technologies and libraries used is available at the bottom of this page.</p>
+
+    <hr class="my-4">
+    <h1>The history behind the idea</h1>
+    <p class="lead">I was interested in graph theory, because I wasn't taught it.</p>
+    <p>In 2nd year I have stumbled on wikipedia pages about graph theory as well as network algorithms, where I learned terms like negative cycle or
+       algorithms such as Dijkstra's or Bellman-Ford (the former was taught in 3rd year in some depth).
+    </p>
+    <p>I also have a friend who studies Economics, and he explained the concept of an arbitrage to me. The possible connection between the two 
+      clicked quickly and today I am more than happy to present the result.
+    </p>
+    <hr class="my-4">
+    <h1>Customize it</h1>
+    <p>If you enjoyed the project, and wish to contribute or personalize it, you can do a few things:
+      <ul>
+        <li>Add new exchanges to make the graph bigger and exponentially increase possibilities;</li>
+        <li>Modify the <code>encodeRatio()</code> method to make the app behave as desired;</li>
+        <li>Use it to learn or teach graph theory used as a real-world example.</li>
+      </ul>
+    </p>
+
+    <hr class="my-4">
+    <h1>Quickstart guide</h1>
+    <p>At the minute, to run the app, you must:
+      <ul>
+        <li>Make sure you are running the most modern version of the app:
+          <ul><li><code>git clone https://github.com/PitiRR/VisualGraphTheory</code></li></ul></li>
+        <li>Download and update all node packages: 
+          <ul><li><code>npm update</code></li></ul>
+        </li>
+        <li>You need to host the JSON file generated by <code>downloadJSON()</code> method.
+          <ul><li>I strongly recommend downloading VSCODE Live Server feature and running it. You may do it in the cmd:</li>
+            <ul><li><code>code --install-extension ritwickdey.LiveServer</code></li></ul>
+            <li>Or, in VSC, search for <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a></li>
+          <li>By default, it is running on port 5500.</li></ul>
+        </li>
+        <li>Finally, you can host the server by running <code>node src/server.js</code> command.</li>
+      </ul>
+    </p>
+
+    <hr class="my-4">
+    <h1>List of technologies and libraries used</h1>
+    <p>The following technologies, tools and libraries have been used to develop the app:
+      <ul>
+        <li>Typescript;</li>
+        <li>Node.js;</li>
+        <li>Express;</li>
+        <li>d3;</li>
+        <li>VSC (debugging, intellisense, Live Server, etc.);</li>
+        <li>cheerio;</li>
+        <li>axios;</li>
+        <li>ejs;</li>
+        <li>Other, minor tools such as:
+          <ul><li>nodemon</li></ul>
+        </li>
+      </ul>
+    </p>
   </div>
-</div>
 </main>
 
 <footer>

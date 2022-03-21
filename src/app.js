@@ -20,7 +20,7 @@ export const encodeRatio = (num) => {
     */
     return -Math.log(num);
 };
-const downloadJSON = (name, myJSON) => {
+export const downloadJSON = (name, myJSON) => {
     /**
      * This method saves a JSON (conforming to IJSON format, more in graph.ts) into a file.
      * Required for visualization.
@@ -28,7 +28,7 @@ const downloadJSON = (name, myJSON) => {
      * @param myJSON Object to be saved
      * @version 1.0.0
      */
-    fs.writeFile(name, JSON.stringify(myJSON, null, 1), function (err) {
+    fs.writeFile(`./JSONs/${name}.json`, JSON.stringify(myJSON, null, 1), function (err) {
         if (err) {
             console.log(err);
         }

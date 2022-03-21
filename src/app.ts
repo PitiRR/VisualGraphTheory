@@ -22,7 +22,7 @@ export const encodeRatio = (num: number): number => {
     */
     return -Math.log(num);
 }
-const downloadJSON = (name: string, myJSON: IJSON): void => {
+export const downloadJSON = (name: string, myJSON: IJSON): void => {
     /**
      * This method saves a JSON (conforming to IJSON format, more in graph.ts) into a file.
      * Required for visualization.
@@ -30,7 +30,7 @@ const downloadJSON = (name: string, myJSON: IJSON): void => {
      * @param myJSON Object to be saved
      * @version 1.0.0
      */
-    fs.writeFile(name, JSON.stringify(myJSON, null, 1), function(err) {
+    fs.writeFile(`./JSONs/${name}.json`, JSON.stringify(myJSON, null, 1), function(err) {
         if (err) {
             console.log(err);
         }
@@ -49,5 +49,6 @@ export const arbitrage = async(): Promise<[Edge[], Graph]> => {
     } else { 
         console.log("No negative cycle found.");
     }
+
     return [ cycleOrNull, myGraph ];
 }

@@ -1,0 +1,1413 @@
+{
+ "nodes": [
+  {
+   "name": "SEK"
+  },
+  {
+   "name": "AUD"
+  },
+  {
+   "name": "BGN"
+  },
+  {
+   "name": "CAD"
+  },
+  {
+   "name": "CHF"
+  },
+  {
+   "name": "CNY"
+  },
+  {
+   "name": "CZK"
+  },
+  {
+   "name": "DKK"
+  },
+  {
+   "name": "EUR"
+  },
+  {
+   "name": "GBP"
+  },
+  {
+   "name": "HKD"
+  },
+  {
+   "name": "HRK"
+  },
+  {
+   "name": "HUF"
+  },
+  {
+   "name": "INR"
+  },
+  {
+   "name": "ISK"
+  },
+  {
+   "name": "JPY"
+  },
+  {
+   "name": "MAD"
+  },
+  {
+   "name": "MXN"
+  },
+  {
+   "name": "NOK"
+  },
+  {
+   "name": "NZD"
+  },
+  {
+   "name": "PLN"
+  },
+  {
+   "name": "RUB"
+  },
+  {
+   "name": "SAR"
+  },
+  {
+   "name": "SGD"
+  },
+  {
+   "name": "THB"
+  },
+  {
+   "name": "TRY"
+  },
+  {
+   "name": "USD"
+  },
+  {
+   "name": "ZAR"
+  },
+  {
+   "name": "RON"
+  },
+  {
+   "name": "AED"
+  },
+  {
+   "name": "BRL"
+  },
+  {
+   "name": "CSC"
+  },
+  {
+   "name": "EGP"
+  },
+  {
+   "name": "IDR"
+  },
+  {
+   "name": "ILS"
+  },
+  {
+   "name": "JOD"
+  },
+  {
+   "name": "MYR"
+  },
+  {
+   "name": "TWD"
+  },
+  {
+   "name": "VND"
+  },
+  {
+   "name": "BTC"
+  },
+  {
+   "name": "ETH"
+  },
+  {
+   "name": "USDT"
+  },
+  {
+   "name": "BNB"
+  },
+  {
+   "name": "USDC"
+  },
+  {
+   "name": "XRP"
+  },
+  {
+   "name": "LUNA"
+  },
+  {
+   "name": "ADA"
+  },
+  {
+   "name": "SOL"
+  },
+  {
+   "name": "AVAX"
+  }
+ ],
+ "links": [
+  {
+   "source": "SEK",
+   "target": "AUD",
+   "weight": 1.9486350046905347,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "BGN",
+   "weight": 1.6789826316250942,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "CAD",
+   "weight": 2.019757883268447,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "CHF",
+   "weight": 6.926082504682974,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "CNY",
+   "weight": 0.40011750178156913,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "CZK",
+   "weight": 3.7488450352813705,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "DKK",
+   "weight": 4.9488847052835,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "EUR",
+   "weight": 2.350698837967396,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "GBP",
+   "weight": 2.524992373327286,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "HKD",
+   "weight": 0.19251938177040054,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "HRK",
+   "weight": 0.32382111906765426,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "HUF",
+   "weight": 1.0312252699662545,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "INR",
+   "weight": 2.523694576995261,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "ISK",
+   "weight": 2.0497037234158797,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "JPY",
+   "weight": 2.07476813832224,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "MAD",
+   "weight": -0.031593871591178595,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "MXN",
+   "weight": -0.763784260159386,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "NOK",
+   "weight": 4.688492433165268,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "NZD",
+   "weight": 1.8784721905133983,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "PLN",
+   "weight": 0.8120407105003559,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "RUB",
+   "weight": 2.196946760971049,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "SAR",
+   "weight": 0.927744881919271,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "SGD",
+   "weight": 1.9457672817074025,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "THB",
+   "weight": -1.2630153449597195,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "TRY",
+   "weight": -0.4417660878344959,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "USD",
+   "weight": 2.250944369839057,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SEK",
+   "target": "ZAR",
+   "weight": -0.45397281217320784,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "AUD",
+   "target": "SEK",
+   "weight": -1.9365954732735038,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "AUD",
+   "target": "PLN",
+   "weight": -1.1434581764599447,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "AUD",
+   "target": "EUR",
+   "weight": 0.3398880639223823,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "BGN",
+   "target": "SEK",
+   "weight": -1.6677256883046074,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "BGN",
+   "target": "PLN",
+   "weight": -0.8702467933727484,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "BGN",
+   "target": "EUR",
+   "weight": 0.590319870760475,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "CAD",
+   "target": "SEK",
+   "weight": -2.006938050887968,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "CAD",
+   "target": "PLN",
+   "weight": -1.2124765448171568,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "CAD",
+   "target": "EUR",
+   "weight": 0.26954095541858447,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "CHF",
+   "target": "SEK",
+   "weight": -6.913127025284028,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "CHF",
+   "target": "PLN",
+   "weight": -1.5178707189086098,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "CHF",
+   "target": "EUR",
+   "weight": -0.02612670573827135,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "CNY",
+   "target": "SEK",
+   "weight": -0.38784409935076186,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "CNY",
+   "target": "EUR",
+   "weight": 1.8421268765918415,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "CZK",
+   "target": "SEK",
+   "weight": -3.7358107487983685,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "CZK",
+   "target": "PLN",
+   "weight": 1.6660082639224947,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "CZK",
+   "target": "EUR",
+   "weight": 3.1419147837320724,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "DKK",
+   "target": "SEK",
+   "weight": -4.935024860479038,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "DKK",
+   "target": "PLN",
+   "weight": 0.4652151125139384,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "DKK",
+   "target": "EUR",
+   "weight": 1.950591087573854,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "SEK",
+   "weight": 2.2874714551839976,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "PLN",
+   "weight": 1.472472057360943,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "USD",
+   "weight": 0.048790164169432056,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "AED",
+   "weight": 1.3056264580524357,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "AUD",
+   "weight": 0.3364722366212129,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "BGN",
+   "weight": 0.587786664902119,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "BRL",
+   "weight": 1.5195132049061133,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "CAD",
+   "weight": 0.27002713721306026,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "CHF",
+   "weight": -0.030459207484708654,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "CNY",
+   "weight": 1.8421356765531216,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "CSC",
+   "weight": 4.66645341440499,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "CZK",
+   "weight": 3.1415627217655304,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "DKK",
+   "weight": 1.9501867058225737,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "EGP",
+   "weight": 2.8130106367386967,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "GBP",
+   "weight": -0.23572233352106978,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "HKD",
+   "weight": 2.0781907597781832,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "HRK",
+   "weight": 1.951608170169951,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "HUF",
+   "weight": 5.84629425594482,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "IDR",
+   "weight": 2.579913753366335,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "ILS",
+   "weight": 1.169381359556317,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "INR",
+   "weight": 4.246206911531347,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "ISK",
+   "weight": 4.869071729774468,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "JOD",
+   "weight": -0.342490308946776,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "JPY",
+   "weight": 4.822376144635548,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "MXN",
+   "weight": 3.0116056227102814,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "MYR",
+   "weight": 1.4182774069729414,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "NOK",
+   "weight": 2.2071749081893874,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "NZD",
+   "weight": 0.40546510810816444,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "RON",
+   "weight": 1.4861396960896067,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "RUB",
+   "weight": 4.600961341214036,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "SGD",
+   "weight": 0.3364722366212129,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "THB",
+   "weight": 3.534853766474829,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "TRY",
+   "weight": 2.716018370751387,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "TWD",
+   "weight": 3.3463891451671604,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "VND",
+   "weight": 2.9984286351017335,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EUR",
+   "target": "ZAR",
+   "weight": 2.7285062096695922,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "GBP",
+   "target": "SEK",
+   "weight": -2.5119217665284865,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "GBP",
+   "target": "PLN",
+   "weight": -1.7207645950704304,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "GBP",
+   "target": "EUR",
+   "weight": -0.23301308682431401,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "HKD",
+   "target": "SEK",
+   "weight": -0.18057002375514825,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "HKD",
+   "target": "PLN",
+   "weight": 0.6137816251792049,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "HKD",
+   "target": "EUR",
+   "weight": 2.0786418615092717,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "HRK",
+   "target": "SEK",
+   "weight": -0.3165610320021576,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "HRK",
+   "target": "PLN",
+   "weight": 0.49446026967972645,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "HRK",
+   "target": "EUR",
+   "weight": 1.9512946193321532,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "HUF",
+   "target": "SEK",
+   "weight": -1.017944385600655,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "HUF",
+   "target": "EUR",
+   "weight": 5.809142990314028,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "INR",
+   "target": "SEK",
+   "weight": -2.510541907379831,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "INR",
+   "target": "EUR",
+   "weight": 4.268697949366879,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "ISK",
+   "target": "SEK",
+   "weight": -1.926523435255123,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "ISK",
+   "target": "EUR",
+   "weight": 4.8283137373023015,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "JPY",
+   "target": "SEK",
+   "weight": -2.0621300589049465,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "JPY",
+   "target": "EUR",
+   "weight": 4.8283137373023015,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "MAD",
+   "target": "SEK",
+   "weight": 0.03780571473589881,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "MXN",
+   "target": "SEK",
+   "weight": 0.7780516876503893,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "MXN",
+   "target": "PLN",
+   "weight": 1.5716605481000705,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "MXN",
+   "target": "EUR",
+   "weight": 3.0118616554838744,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "NOK",
+   "target": "SEK",
+   "weight": -4.675280033425079,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "NOK",
+   "target": "PLN",
+   "weight": 0.7271177001310987,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "NOK",
+   "target": "EUR",
+   "weight": 2.2072749131897207,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "NZD",
+   "target": "SEK",
+   "weight": -1.866356607434838,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "NZD",
+   "target": "PLN",
+   "weight": -1.0713781157143405,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "NZD",
+   "target": "EUR",
+   "weight": 0.4073368587409604,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "SEK",
+   "weight": -0.7845862408767268,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "EUR",
+   "weight": 1.549539277025749,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "USD",
+   "weight": 1.4511219029869467,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "CHF",
+   "weight": 1.5265996341250958,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "GBP",
+   "weight": 1.727896275561102,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "AUD",
+   "weight": 1.1529742033541206,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "BGN",
+   "weight": 0.880663554231004,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "CAD",
+   "weight": 1.221360753927163,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "CZK",
+   "weight": -1.6554818509355071,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "DKK",
+   "weight": -0.4557063245449111,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "HKD",
+   "weight": -0.6060524737090116,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "HRK",
+   "weight": -0.4621942023542537,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "MXN",
+   "weight": -1.559220196273483,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "NOK",
+   "weight": -0.7147794806870591,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "NZD",
+   "weight": 1.0816017598347032,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "RON",
+   "weight": -0.04552051530180923,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "RUB",
+   "weight": -3.1748589394514264,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "SGD",
+   "weight": 1.147910260389396,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "TRY",
+   "weight": -1.2211189631609065,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "PLN",
+   "target": "ZAR",
+   "weight": -1.249318906092813,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "RUB",
+   "target": "SEK",
+   "weight": -2.176171168138387,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "RUB",
+   "target": "PLN",
+   "weight": 3.223888366691745,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "RUB",
+   "target": "EUR",
+   "weight": 4.605170185988091,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "SAR",
+   "target": "SEK",
+   "weight": -0.9157305750155919,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SGD",
+   "target": "SEK",
+   "weight": -1.9336061934562914,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "SGD",
+   "target": "PLN",
+   "weight": -1.1393062749956657,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "SGD",
+   "target": "EUR",
+   "weight": 0.3334468178195252,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "THB",
+   "target": "SEK",
+   "weight": 1.2708251113137765,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "THB",
+   "target": "EUR",
+   "weight": 3.533586569707901,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "TRY",
+   "target": "SEK",
+   "weight": 0.4653743608620733,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "TRY",
+   "target": "PLN",
+   "weight": 1.276901984348694,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "TRY",
+   "target": "EUR",
+   "weight": 2.7165865321244964,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "SEK",
+   "weight": -2.236819152218426,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "PLN",
+   "weight": -1.4440678635318505,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "EUR",
+   "weight": 0.04457904339796736,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "BTC",
+   "weight": 10.618643232040037,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "ETH",
+   "weight": 7.97923919851195,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "USDT",
+   "weight": -0.1997933027059945,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "BNB",
+   "weight": 5.980223856598758,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "USDC",
+   "weight": -0.19991542519500266,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "XRP",
+   "weight": -0.4599740936085572,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "LUNA",
+   "weight": 4.553760042668707,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "ADA",
+   "weight": -0.3006997695330844,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "SOL",
+   "weight": 4.479707864951452,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USD",
+   "target": "AVAX",
+   "weight": 4.4531710233203246,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "ZAR",
+   "target": "SEK",
+   "weight": 0.46856466505148126,
+   "cantor": "https://www.swedbank.se/privat/rantor-priser-och-kurser/valutakurser-betalningar.html",
+   "cycle": false
+  },
+  {
+   "source": "ZAR",
+   "target": "PLN",
+   "weight": 1.2612488721456663,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "ZAR",
+   "target": "EUR",
+   "weight": 2.7287632426997517,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "RON",
+   "target": "PLN",
+   "weight": 0.05815891417353214,
+   "cantor": "https://internetowykantor.pl/kursy-walut/",
+   "cycle": false
+  },
+  {
+   "source": "RON",
+   "target": "EUR",
+   "weight": 1.4867778996982128,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "AED",
+   "target": "EUR",
+   "weight": 1.3061901168782293,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "BRL",
+   "target": "EUR",
+   "weight": 1.5189118857347297,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "CSC",
+   "target": "EUR",
+   "weight": 4.710530701645918,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "EGP",
+   "target": "EUR",
+   "weight": 2.8134107167600364,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "IDR",
+   "target": "EUR",
+   "weight": 9.433483923290392,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "ILS",
+   "target": "EUR",
+   "weight": 1.168283961917429,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "JOD",
+   "target": "EUR",
+   "weight": -0.3471606260181092,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "MYR",
+   "target": "EUR",
+   "weight": 1.4183218079586506,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "TWD",
+   "target": "EUR",
+   "weight": 3.3467091963780855,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "VND",
+   "target": "EUR",
+   "weight": 9.903487552536127,
+   "cantor": "https://www.reisebank.de/reisegeld",
+   "cycle": false
+  },
+  {
+   "source": "BTC",
+   "target": "USD",
+   "weight": -10.618643232040037,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "ETH",
+   "target": "USD",
+   "weight": -7.97923919851195,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USDT",
+   "target": "USD",
+   "weight": 0.19979330270599455,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "BNB",
+   "target": "USD",
+   "weight": -5.980223856598759,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "USDC",
+   "target": "USD",
+   "weight": 0.19991542519500263,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "XRP",
+   "target": "USD",
+   "weight": 0.4599740936085571,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "LUNA",
+   "target": "USD",
+   "weight": -4.553760042668707,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "ADA",
+   "target": "USD",
+   "weight": 0.30069976953308447,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "SOL",
+   "target": "USD",
+   "weight": -4.479707864951452,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  },
+  {
+   "source": "AVAX",
+   "target": "USD",
+   "weight": -4.4531710233203246,
+   "cantor": "https://coinmarketcap.com/",
+   "cycle": false
+  }
+ ]
+}

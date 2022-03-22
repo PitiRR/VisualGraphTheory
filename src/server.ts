@@ -1,5 +1,5 @@
 import express from 'express';
-import { arbitrage, downloadJSON } from '../src/app.js';
+import { arbitrage } from '../src/app.js';
 import { Edge } from '../src/Edge.js';
 import { Graph, IJSON } from '../src/graph.js';
 import path from 'path';
@@ -26,8 +26,8 @@ app.get('/visualize', async (req, res) => {
     let resValues: [Edge[], Graph] = await arbitrage();
     let cycleOrNull: Edge[] = resValues[0];
     let myGraph: IJSON = resValues[1].generateJSON(cycleOrNull);
-    downloadJSON("myGraph", myGraph);
-    res.render('pages/visualize', {
+    //important note: We are sending the data to EJS. Although the entire render file is EJS, the variable is unavailable to <script> tag by default.
+    res.render('pages/visualize', { 
         graph: myGraph,
         path: cycleOrNull
     });

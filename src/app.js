@@ -22,13 +22,16 @@ export const encodeRatio = (num) => {
 };
 export const downloadJSON = (name, myJSON) => {
     /**
+     * This method is deprecated. d3 library allows for using a local JSON to access data, instead of using d3.json(filename).
+     * This is the result of implementing EJS templating engine that uses object variable passed by the server.
+     * ---------
      * This method saves a JSON (conforming to IJSON format, more in graph.ts) into a file.
      * Required for visualization.
      * @param name provided name for the JSON. Recommended: the same as the code variable
      * @param myJSON Object to be saved
      * @version 1.0.0
      */
-    fs.writeFile(`./JSONs/${name}.json`, JSON.stringify(myJSON, null, 1), function (err) {
+    fs.writeFile(`.${name}.json`, JSON.stringify(myJSON, null, 1), function (err) {
         if (err) {
             console.log(err);
         }

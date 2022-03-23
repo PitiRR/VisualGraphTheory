@@ -35,16 +35,7 @@ export const getSEK = async (graph: Graph): Promise<void> => {
         $('tr > td:nth-child(3)').each((_, elem) => {
             shortNameList.push($(elem).text().trim())
 		});
-        // for(let item of tempBuyList) {
-        //     console.log(item)
-        // }
-        // for(let item of tempSellList) {
-        //     console.log(item)
-        // }
-        // for(let i = 0; i < shortNameList.length; i++)
-        //     console.log("i: "+i+" "+shortNameList[i])
         for(let i = 0; i < tempSellList.length; i++) {
-            //console.log(shortNameList[i] + " Sell: "+tempSellList[i]+typeof(tempSellList[i])+" Buy: "+tempBuyList[i]+typeof(tempBuyList[i]))
             graph.insertOrImproveEdge(new Edge("SEK", shortNameList[i], encodeRatio(1 / tempSellList[i]), url))
             graph.insertOrImproveEdge(new Edge(shortNameList[i], "SEK", encodeRatio(tempBuyList[i]), url))
         }

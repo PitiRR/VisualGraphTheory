@@ -26,7 +26,6 @@ app.get('/visualize', async (req, res) => {
     let resValues: [Edge[], Graph] = await arbitrage();
     let cycleOrNull: Edge[] = resValues[0];
     let myGraph: IJSON = resValues[1].generateJSON(cycleOrNull);
-    //important note: We are sending the data to EJS. Although the entire render file is EJS, the variable is unavailable to <script> tag by default.
     res.render('pages/visualize', { 
         graph: myGraph,
         path: cycleOrNull
